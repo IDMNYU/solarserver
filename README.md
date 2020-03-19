@@ -1,5 +1,5 @@
 # Solar Server
-(Mar 19, 2020: Under construction by Keita at IDM)
+(Mar 19, 2020: It's under construction by Keita at IDM)
 
 ## setting up a Linux Apache MySQL PHP (LAMP) server on a Raspberry Pi
 sudo apt-get install apache2 -y<br>
