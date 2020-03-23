@@ -15,8 +15,9 @@ import sys
 def aggregate(path):
 
     #this assumes only 1 ina file and 1 selenium file in directory!!!
-    testDirectoryName = path #must end with a /
-    testDirectoryPath = "/home/pi/Desktop/web-server-energy-consumption-recorder/" + path + "/"
+    #testDirectoryName = path #must end with a /
+    #testDirectoryPath = "/home/pi/Desktop/web-server-energy-consumption-recorder/" + path + "/"
+    testDirectoryPath = path + "/"
     fileList = glob.glob(testDirectoryPath  + "*.csv")
 
     print(testDirectoryPath)
