@@ -24,7 +24,9 @@ See [Python Computer Wiring](https://learn.adafruit.com/adafruit-ina219-current-
 Here is the wiring with Server-Pi and Measuring-Pi + INA219
 (TBA)
 
-In order to use `adafruit-circuitpython-ina219` library, first install `CircuitPython Library` on Measuring-Pi (See [Installing CircuitPython Libraries on Raspberry Pi](https://learn.adafruit.com/circuitpython-on-raspberrypi-linux/installing-circuitpython-on-raspberry-pi))
+First install `CircuitPython Library` on Measuring-Pi (See [Installing CircuitPython Libraries on Raspberry Pi](https://learn.adafruit.com/circuitpython-on-raspberrypi-linux/installing-circuitpython-on-raspberry-pi)).
+
+Then install `adafruit-circuitpython-ina219` library via `sudo pip3 install adafruit-circuitpython-ina219` (See [Python Installation of INA219 Library](https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/python-circuitpython#python-installation-of-ina219-library-7-6)) 
 
 #### Run
 Run `python3 ina219_datarecorder.py`
