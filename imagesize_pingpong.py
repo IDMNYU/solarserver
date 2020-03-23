@@ -51,42 +51,26 @@ def pingpongImage(path='data'):
     SERVER_IP = ""
     if (len(sys.argv) > 1):
         SERVER_IP = str(sys.argv[1])
-        print(SERVER_IP)
     else:
         print("Error: no ip address given.")
         sys.exit()
 
     fileName = path+'/selenium-'+str(datetime.date.today())+'-'+str(int(time.time()))+'.csv' 
-    print (fileName)
-    print("")
 
     dataDF = pd.DataFrame(columns=['task','time'])
 
-    """
-    if (len(sys.argv) > 1):
-        testTime = float(sys.argv[1])
-    else: 
-        testTime = 5 #default 5 seconds
-    """
     testTime = 5
-
     bookendSleepTime = 60
     middleSleepTime = 30
 
-    #bookendSleepTime = 5
-    #middleSleepTime = 5
-
-    #60 seconds idle
+    #60 seconds idle for the beggining
     time.sleep(bookendSleepTime)
 
     #open
-    times = 4
+    times = 3
 
     # run the whole thing i times to account for start up weirdness
     for i in list(range(times)):
-
-        time.sleep(middleSleepTime)
-
         #Phase 1
         print ("Starting large test!")
 
@@ -112,7 +96,6 @@ def pingpongImage(path='data'):
         time.sleep(middleSleepTime)
 
         # Phase 2
-
         print ("Starting small test!")
 
         dataDF = dataDF.append({'task' : 'start v2 '+ str(i), 'time': time.time()},ignore_index=True)
@@ -132,15 +115,19 @@ def pingpongImage(path='data'):
         SolarServer.tearDown()
         dataDF = dataDF.append({'task' : 'stop v2 '+ str(i) , 'time': time.time()},ignore_index=True)
 
+        #chill out between tests
+        time.sleep(middleSleepTime)
+
+
     #save data to file
-    # check if the file already exists
     try:
         with open(fileName) as csvfile:
             print("This file already exists!")
     except:
         dataDF.to_csv(fileName, sep=',',index=False)
 
-    #print(dataDF)
+    #60 seconds idle at the end
+    time.sleep(bookendSleepTime)
     print("pingpong done")
     
 

@@ -14,10 +14,9 @@ thread1 = threading.Thread(target=ina219_datarecorder.recordEnergyConsumption, a
 thread2 = threading.Thread(target=imagesize_pingpong.pingpongImage, args=([newDirPath]))
 thread1.start()
 thread2.start()
-thread1.join()
 thread2.join()
+ina219_datarecorder.global_flag = False
+thread1.join()
 
-print("main done")
 print("Run aggregator")
-
 aggregator.aggregate(newDirPath)
