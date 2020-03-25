@@ -30,10 +30,16 @@ Then install `adafruit-circuitpython-ina219` library via `sudo pip3 install adaf
 
 #### Run
 Go to [energy_consumption](https://github.com/IDMNYU/solarserver/tree/master/energy_consumption)
-```$ cd energy_consumption/```
+
+```
+$ cd energy_consumption/
+```
 
 Run
-```$ python3 json_ina219_datarecorder.py```
+
+```
+$ python3 json_ina219_datarecorder.py
+```
 
 Default interval is 60 seconds. Change `sleep(60)` as needed.
 
