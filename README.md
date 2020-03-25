@@ -46,15 +46,34 @@ Default interval is 60 seconds. Change `sleep(60)` as needed.
 ### Compare the energy consumptions with different UI components
 #### Prerequisites
 You need to install Selenium (firefox driver) on Measuring-Pi.
-- Run `$ sudo apt-get install firefox-esr` to install firefox on Measuring-Pi.
-- Run `$ sudo pip3 install selenium` to install seleinum.
-- You also need a specific arm version (v0.23.0-arm7hf) of geckodriver to run selenium on RaspberryPi. Run `$ sudo wget https://github.com/mozilla/geckodriver/releases/download/v0.23.0/geckodriver-v0.23.0-arm7hf.tar.gz`, open it and move geckodriver to /usr/local/bin/
-- To test, run Example 0 from https://pypi.org/project/selenium/.
+
+Install firefox on Measuring-Pi.
+
+```$ sudo apt-get install firefox-esr```
+
+Install seleinum
+```$ sudo pip3 install selenium```
+
+You also need a specific arm version (v0.23.0-arm7hf) of geckodriver to run selenium on RaspberryPi. 
+
+```$ sudo wget https://github.com/mozilla/geckodriver/releases/download/v0.23.0/geckodriver-v0.23.0-arm7hf.tar.gz```
+
+Open it and move geckodriver to /usr/local/bin/
+
+To test, run `Example 0` from https://pypi.org/project/selenium/.
 
 You also need to put the `dropdown` folder under /var/www/html on your Server-Pi.
 
 #### Run
-Run `python3 main.py IP-ADDRESS-OF-SERVER-PI` on Measuring-Pi (Replace IP-ADDRESS-OF-SERVER-PI to your Server-Pi's actual IP address).
+Go to [energy_comparison](https://github.com/IDMNYU/solarserver/tree/master/energy_comparison)
+
+```
+$ cd energy_comparison/
+```
+
+Run the following code on Measuring-Pi with replacing IP-ADDRESS-OF-SERVER-PI to your Server-Pi's actual IP address
+
+```python3 main.py IP-ADDRESS-OF-SERVER-PI```
 
 `main.py` will run three programs:
 - `ina219_datarecorder.py`: Measuring-Pi gets power consumption of Server-Pi and save `ina219-xxx.csv` file under `data` folder.
