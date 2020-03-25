@@ -29,11 +29,11 @@ First install `CircuitPython Library` on Measuring-Pi (See [Installing CircuitPy
 Then install `adafruit-circuitpython-ina219` library via `sudo pip3 install adafruit-circuitpython-ina219` (See [Python Installation of INA219 Library](https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/python-circuitpython#python-installation-of-ina219-library-7-6)) 
 
 #### Run
-- Go to [energy_consumption](https://github.com/IDMNYU/solarserver/tree/master/energy_consumption)
-`$ cd energy_consumption/`
+Go to [energy_consumption](https://github.com/IDMNYU/solarserver/tree/master/energy_consumption)
+```$ cd energy_consumption/```
 
-- Run
-`$ python3 json_ina219_datarecorder.py`
+Run
+```$ python3 json_ina219_datarecorder.py```
 
 Default interval is 60 seconds. Change `sleep(60)` as needed.
 
