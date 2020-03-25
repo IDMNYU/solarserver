@@ -81,7 +81,7 @@ $ cd energy_comparison/
 Run the following code on Measuring-Pi with replacing IP-ADDRESS-OF-SERVER-PI to your Server-Pi's actual IP address.
 
 ```
-python3 main.py IP-ADDRESS-OF-SERVER-PI
+$ python3 main.py IP-ADDRESS-OF-SERVER-PI
 ```
 
 `main.py` will run three programs:
