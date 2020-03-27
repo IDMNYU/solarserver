@@ -14,10 +14,11 @@ We use two Raspberry Pi and one INA219.
 - The other Raspberry Pi with INA219 (Measuring-Pi) is for measuring the Server-Pi's power consumption.
 
 ### Wiring
-See [Python Computer Wiring](https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/python-circuitpython) for the wiring with Measuring-Pi and INA219.
+#### Wiring with Measuring-Pi and INA219.
+See [Python Computer Wiring](https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/python-circuitpython).
 
-Here is the wiring with Server-Pi and Measuring-Pi + INA219
-(TBA)
+#### Wiring with Server-Pi and Measuring-Pi + INA219
+![Wiring with Server-Pi and Measuring-Pi + INA219](https://github.com/IDMNYU/solarserver/blob/master/images/wiring.png)
 
 ### Software Prerequisites
 #### To use INA219
