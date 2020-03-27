@@ -10,38 +10,32 @@ This project is
 ## Getting Started
 ### Hardwares
 We use two Raspberry Pi and one INA219.
-- One Raspberry Pi (Server-Pi) is for a webserver
-- The other Raspberry Pi with INA219 (Measuring-Pi) is for measuring the Server-Pi's power consumption
+- One Raspberry Pi (Server-Pi) is for a webserver.
+- The other Raspberry Pi with INA219 (Measuring-Pi) is for measuring the Server-Pi's power consumption.
+
+### Wiring
+See [Python Computer Wiring](https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/python-circuitpython) for the wiring with Measuring-Pi and INA219.
+
+Here is the wiring with Server-Pi and Measuring-Pi + INA219
+(TBA)
+
+### Software Prerequisites
+#### To use INA219
+First install `CircuitPython Library` on Measuring-Pi (See [Installing CircuitPython Libraries on Raspberry Pi](https://learn.adafruit.com/circuitpython-on-raspberrypi-linux/installing-circuitpython-on-raspberry-pi)).
+
+Then install `adafruit-circuitpython-ina219` library via `sudo pip3 install adafruit-circuitpython-ina219` (See [Python Installation of INA219 Library](https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/python-circuitpython#python-installation-of-ina219-library-7-6))
+
+#### Other libraries
+TBA
+
 
 ## Running the codes
 ### Hosting a webserver on Server-Pi
 Please refer to [Set up an Apache web server](https://projects.raspberrypi.org/en/projects/lamp-web-server-with-wordpress/2) and setup a server on Server-Pi.
 
 ### Measuring the energy consumption of Server-Pi
-#### Prerequisites
-See [Python Computer Wiring](https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/python-circuitpython) for the wiring with Measuring-Pi and INA219.
+See [energy_consumption](https://github.com/IDMNYU/solarserver/tree/master/energy_consumption)
 
-Here is the wiring with Server-Pi and Measuring-Pi + INA219
-(TBA)
-
-First install `CircuitPython Library` on Measuring-Pi (See [Installing CircuitPython Libraries on Raspberry Pi](https://learn.adafruit.com/circuitpython-on-raspberrypi-linux/installing-circuitpython-on-raspberry-pi)).
-
-Then install `adafruit-circuitpython-ina219` library via `sudo pip3 install adafruit-circuitpython-ina219` (See [Python Installation of INA219 Library](https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/python-circuitpython#python-installation-of-ina219-library-7-6)) 
-
-#### Run
-Go to [energy_consumption](https://github.com/IDMNYU/solarserver/tree/master/energy_consumption)
-
-```
-$ cd energy_consumption/
-```
-
-Run
-
-```
-$ python3 json_ina219_datarecorder.py
-```
-
-Default interval is 60 seconds. Change `sleep(60)` as needed.
 
 ### Compare the energy consumptions with different UI components
 #### Prerequisites
