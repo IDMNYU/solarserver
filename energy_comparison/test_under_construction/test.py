@@ -1,5 +1,3 @@
-# In[1]:
-
 import csv
 import numpy as np
 import pandas as pd
@@ -53,31 +51,67 @@ def wattComparison(inaData, selRawData):
     #plt.show()
     plt.savefig('watts.png')
 
+def voltageComparison(inaData, selRawData):
+    selVolts = []
+    selTimes = []
+    for selTime in selRawData.time:
+        for inaVolt, inaTime in zip(inaData.V, inaData.time):
+            if math.isclose(selTime, inaTime, rel_tol=0.000000001):
+                print("sel: " + str(selTime))
+                print("ina: " + str(inaTime))
+                print(inaVolt)
+                selTimes.append(inaTime)
+                selVolts.append(inaVolt)
+
+    selData = pd.DataFrame({"volts": selVolts, "time": selTimes})
+    print(selData.head())
+
+    # graph
+    inaData.plot(x='time', y='V', linewidth = 0.5)
+    plt.scatter(x=selData.time, y=selData.volts, c='red')
+    #plt.show()
+    plt.savefig('volts.png')
+
+def currentComparison(inaData, selRawData):
+    selCurrents = []
+    selTimes = []
+    for selTime in selRawData.time:
+        for inaCurrent, inaTime in zip(inaData.mA, inaData.time):
+            if math.isclose(selTime, inaTime, rel_tol=0.000000001):
+                print("sel: " + str(selTime))
+                print("ina: " + str(inaTime))
+                print(inaCurrent)
+                selTimes.append(inaTime)
+                selCurrents.append(inaCurrent)
+
+    selData = pd.DataFrame({"currents": selCurrents, "time": selTimes})
+    print(selData.head())
+
+    # graph
+    inaData.plot(x='time', y='mA', linewidth = 0.5)
+    plt.scatter(x=selData.time, y=selData.currents, c='red')
+    #plt.show()
+    plt.savefig('currents.png')
+
+
 # In[2]:
 def aggregate(path=""):
     #testDirPath = path + "/"
     #fileList = glob.glob(testDirPath + "*.csv")
     fileList = glob.glob("*.csv")
 
-    # read ina csv file
+    # read ina.csv file add a new column of wattage
     inaData = readCSV(fileList)
-    print(inaData.shape)
-    print(inaData.head())
-
-    # add power to inaData
     inaData = addWatts(inaData)
-    print(inaData.shape)
-    print(inaData.head())
-
 
     # read selenium csv file
     selRawData = readSelemium(fileList)
-    print(selRawData.shape)
-    print(selRawData.head())
 
-    # compare time of ina and selenium
-    # and collect data of wattage and time within range
-    wattComparison(inaData, selRawData)
+    # save a png comparing watts/volts/currents between large and small images
+    # depends on timeframe of ina and selenium data
+    #wattComparison(inaData, selRawData)
+    #voltageComparison(inaData, selRawData)
+    #currentComparison(inaData, selRawData)
 
 
     """
