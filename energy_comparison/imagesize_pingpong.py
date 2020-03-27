@@ -74,7 +74,7 @@ def pingpongImage(path='data'):
         #Phase 1
         print ("Starting large test!")
 
-        dataDF = dataDF.append({'task' : 'start v1 ' + str(i) , 'time': time.time()},ignore_index=True)
+        dataDF = dataDF.append({'task' : '0_' + str(i) + '_start', 'time': time.time()},ignore_index=True)
         SolarServer = SolarServerTest()
 
         tmCurrentTime = time.time()
@@ -82,15 +82,15 @@ def pingpongImage(path='data'):
             
         while (tmCurrentTime - testTime < tmStartTime):
             # this could maybe be simplified in the future...
-            dataDF = dataDF.append({'task' : 'click' , 'time': time.time()},ignore_index=True)
+            dataDF = dataDF.append({'task' : '0_' + str(i) , 'time': time.time()},ignore_index=True)
             SolarServer.test_click("http://" + SERVER_IP + "/dropdown/dropdown_dynamic_limageA.html")
             tmCurrentTime = time.time()
-            dataDF = dataDF.append({'task' : 'click' , 'time': time.time()},ignore_index=True)
+            dataDF = dataDF.append({'task' : '0_' + str(i) , 'time': time.time()},ignore_index=True)
             SolarServer.test_click("http://" + SERVER_IP + "/dropdown/dropdown_dynamic_limageB.html")
             tmCurrentTime = time.time()
 
         SolarServer.tearDown()
-        dataDF = dataDF.append({'task' : 'stop v1 ' + str(i) , 'time': time.time()},ignore_index=True)
+        dataDF = dataDF.append({'task' : '0_' + str(i) + '_stop' , 'time': time.time()},ignore_index=True)
 
         #chill out between tests
         time.sleep(middleSleepTime)
@@ -98,22 +98,22 @@ def pingpongImage(path='data'):
         # Phase 2
         print ("Starting small test!")
 
-        dataDF = dataDF.append({'task' : 'start v2 '+ str(i), 'time': time.time()},ignore_index=True)
+        dataDF = dataDF.append({'task' : '1_' + str(i) + '_start', 'time': time.time()},ignore_index=True)
         SolarServer = SolarServerTest()
 
         tmCurrentTime = time.time()
         tmStartTime = time.time()
             
         while (tmCurrentTime - testTime < tmStartTime):
-            dataDF = dataDF.append({'task' : 'click' , 'time': time.time()},ignore_index=True)
+            dataDF = dataDF.append({'task' : '1_' + str(i) , 'time': time.time()},ignore_index=True)
             SolarServer.test_click("http://" + SERVER_IP + "/dropdown/dropdown_dynamic_simageA.html")
             tmCurrentTime = time.time()
-            dataDF = dataDF.append({'task' : 'click' , 'time': time.time()},ignore_index=True)
+            dataDF = dataDF.append({'task' : '1_' + str(i) , 'time': time.time()},ignore_index=True)
             SolarServer.test_click("http://" + SERVER_IP + "/dropdown/dropdown_dynamic_simageB.html")
             tmCurrentTime = time.time()
 
         SolarServer.tearDown()
-        dataDF = dataDF.append({'task' : 'stop v2 '+ str(i) , 'time': time.time()},ignore_index=True)
+        dataDF = dataDF.append({'task' : '1_' + str(i) + '_stop' , 'time': time.time()},ignore_index=True)
 
         #chill out between tests
         time.sleep(middleSleepTime)
