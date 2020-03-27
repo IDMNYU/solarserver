@@ -22,9 +22,9 @@ See [Python Computer Wiring](https://learn.adafruit.com/adafruit-ina219-current-
 
 ### Software Prerequisites
 #### To use INA219
-First install `CircuitPython Library` on Measuring-Pi (See [Installing CircuitPython Libraries on Raspberry Pi](https://learn.adafruit.com/circuitpython-on-raspberrypi-linux/installing-circuitpython-on-raspberry-pi)).
+First, install `CircuitPython Library` on Measuring-Pi. See [Installing CircuitPython Libraries on Raspberry Pi](https://learn.adafruit.com/circuitpython-on-raspberrypi-linux/installing-circuitpython-on-raspberry-pi) and follow the steps from "Update Your Pi and Python" till "Blinka Test".
 
-Then install `adafruit-circuitpython-ina219` library via `sudo pip3 install adafruit-circuitpython-ina219` (See [Python Installation of INA219 Library](https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/python-circuitpython#python-installation-of-ina219-library-7-6))
+Then, install `adafruit-circuitpython-ina219` library via `$ sudo pip3 install adafruit-circuitpython-ina219` (See [Python Installation of INA219 Library](https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/python-circuitpython#python-installation-of-ina219-library-7-6) for the detail).
 
 #### Other libraries
 TBA
