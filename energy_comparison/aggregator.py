@@ -49,22 +49,22 @@ def organizeSeleniumData(inaData, selRawData):
 
     return pd.DataFrame({"volts": selVolts, "currents": selCurrents, "watts": selWatts, "time": selTimes, "task": taskTypes})
 
-def drawWattGraph(inaData, selData, colors):
+def drawWattGraph(inaData, selData, colors, path):
     inaData.plot(x='time', y='watts', linewidth = 0.5)
     plt.scatter(x=selData.time, y=selData.watts, c=selData.task.str[0].apply(lambda x: colors[x]))
-    plt.savefig('watts.png')
+    plt.savefig(path + 'watts.png')
     #plt.show()
 
-def drawVoltGraph(inaData, selData, colors):
+def drawVoltGraph(inaData, selData, colors, path):
     inaData.plot(x='time', y='V', linewidth = 0.5)
     plt.scatter(x=selData.time, y=selData.volts, c=selData.task.str[0].apply(lambda x: colors[x]))
-    plt.savefig('volts.png')
+    plt.savefig(path + 'volts.png')
     #plt.show()
 
-def drawCurrentGraph(inaData, selData, colors):
+def drawCurrentGraph(inaData, selData, colors, path):
     inaData.plot(x='time', y='mA', linewidth = 0.5)
     plt.scatter(x=selData.time, y=selData.currents, c=selData.task.str[0].apply(lambda x: colors[x]))
-    plt.savefig('currents.png')
+    plt.savefig(path + 'currents.png')
     #plt.show()
 
 def aggregate(path='data'):
@@ -82,9 +82,9 @@ def aggregate(path='data'):
     # graph
     colors = {'0':'red', '1':'blue'} # TODO: automate
 
-    drawWattGraph(inaData, selData, colors)
-    drawVoltGraph(inaData, selData, colors)
-    drawCurrentGraph(inaData, selData, colors)
+    drawWattGraph(inaData, selData, colors, dirPath)
+    drawVoltGraph(inaData, selData, colors, dirPath)
+    drawCurrentGraph(inaData, selData, colors, dirPath)
 
 
 if __name__ == "__main__":
