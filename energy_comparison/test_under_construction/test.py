@@ -9,6 +9,7 @@ import matplotlib.patches as mpatches
 import sys
 import math
 
+
 def readCSV(fileList):
     inaFileName = [k for k in fileList if 'ina' in k]
     inaData = pd.read_csv(inaFileName[0], dtype={"time": float})
@@ -33,23 +34,28 @@ def readSelemium(fileList):
 def wattComparison(inaData, selRawData):
     selWatts = []
     selTimes = []
-    for selTime in selRawData.time:
+    taskTypes = []
+
+    for taskType, selTime in zip(selRawData.task, selRawData.time):
         for inaWatt, inaTime in zip(inaData.watts, inaData.time):
             if math.isclose(selTime, inaTime, rel_tol=0.000000001):
-                print("sel: " + str(selTime))
-                print("ina: " + str(inaTime))
-                print(inaWatt)
+                #print("sel: " + str(selTime))
+                #print("ina: " + str(inaTime))
+                #print(inaWatt)
+                taskTypes.append(taskType)
                 selTimes.append(inaTime)
                 selWatts.append(inaWatt)
 
-    selData = pd.DataFrame({"watts": selWatts, "time": selTimes})
-    print(selData.head())
+    selData = pd.DataFrame({"watts": selWatts, "time": selTimes, "task": taskTypes})
+    #print(selData)
 
     # graph
+    colors = {'0':'red', '1':'blue'}
     inaData.plot(x='time', y='watts', linewidth = 0.5)
-    plt.scatter(x=selData.time, y=selData.watts, c='red')
+    plt.scatter(x=selData.time, y=selData.watts, c=selData.task.str[0].apply(lambda x: colors[x]))
     #plt.show()
     plt.savefig('watts.png')
+    
 
 def voltageComparison(inaData, selRawData):
     selVolts = []
@@ -94,7 +100,6 @@ def currentComparison(inaData, selRawData):
     plt.savefig('currents.png')
 
 
-# In[2]:
 def aggregate(path=""):
     #testDirPath = path + "/"
     #fileList = glob.glob(testDirPath + "*.csv")
@@ -109,7 +114,7 @@ def aggregate(path=""):
 
     # save a png comparing watts/volts/currents between large and small images
     # depends on timeframe of ina and selenium data
-    #wattComparison(inaData, selRawData)
+    wattComparison(inaData, selRawData)
     #voltageComparison(inaData, selRawData)
     #currentComparison(inaData, selRawData)
 
