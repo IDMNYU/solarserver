@@ -1,5 +1,13 @@
 # Energy Consumption
-Thi is to measure the energy consumption of Server-Pi using Measuring-Pi with INA219.
+This is to measure the energy consumption of Server-Pi using Measuring-Pi with INA219.
+
+## Getting Started
+### Hardware Prerequisites
+See README at [solarserver](https://github.com/IDMNYU/solarserver).
+
+### Software Prerequisites
+See README at [solarserver](https://github.com/IDMNYU/solarserver).
+
 
 ## Run codes
 ```
@@ -31,3 +39,5 @@ It will generate `JSON` file like the following.
 ```
 
 Default save interval is 60 seconds. Change `sleep(60)` as needed.
+
+Press `ctrl + C` to finish.

@@ -29,59 +29,16 @@ Then install `adafruit-circuitpython-ina219` library via `sudo pip3 install adaf
 TBA
 
 
-## Running the codes
+## What you can do
 ### Hosting a webserver on Server-Pi
 Please refer to [Set up an Apache web server](https://projects.raspberrypi.org/en/projects/lamp-web-server-with-wordpress/2) and setup a server on Server-Pi.
 
 ### Measuring the energy consumption of Server-Pi
-See [energy_consumption](https://github.com/IDMNYU/solarserver/tree/master/energy_consumption)
-
+This is to measure the energy consumption of Server-Pi using Measuring-Pi with INA219. See [energy_consumption](https://github.com/IDMNYU/solarserver/tree/master/energy_consumption) for more detail.
 
 ### Compare the energy consumptions with different UI components
-#### Prerequisites
-You need to install Selenium (firefox driver) on Measuring-Pi.
+This is to compare the energy consumptions of the server with different UI components using Selenium. See [energy_comparison](https://github.com/IDMNYU/solarserver/tree/master/energy_comparison) for more detail.
 
-Install firefox on Measuring-Pi.
-
-```
-$ sudo apt-get install firefox-esr
-```
-
-Install seleinum
-
-```
-$ sudo pip3 install selenium
-```
-
-You also need a specific arm version (v0.23.0-arm7hf) of geckodriver to run selenium on RaspberryPi. 
-
-```
-$ sudo wget https://github.com/mozilla/geckodriver/releases/download/v0.23.0/geckodriver-v0.23.0-arm7hf.tar.gz
-```
-
-Open it and move geckodriver to /usr/local/bin/
-
-To test, run `Example 0` from https://pypi.org/project/selenium/.
-
-You also need to put the `dropdown` folder under /var/www/html on your Server-Pi.
-
-#### Run
-Go to [energy_comparison](https://github.com/IDMNYU/solarserver/tree/master/energy_comparison).
-
-```
-$ cd energy_comparison/
-```
-
-Run the following code on Measuring-Pi with replacing IP-ADDRESS-OF-SERVER-PI to your Server-Pi's actual IP address.
-
-```
-$ python3 main.py IP-ADDRESS-OF-SERVER-PI
-```
-
-`main.py` will run three programs:
-- `ina219_datarecorder.py`: Measuring-Pi gets power consumption of Server-Pi and save `ina219-xxx.csv` file under `data` folder.
-- `imagesize_pingpong.py`: Measuring-Pi accesses htmls in `dropdown` folder on Server-Pi which show large and small images and save `selenium-xxx.csv` file under `data` folder.
-- `aggregator.py`: Compare `ina219-xxx.csv` and `selenium-xxx.csv`, and show some graphs.
 
 ## Notes
-`aggregator.py` has some errors. All codes are still in progress.
+All codes are still in progress.
