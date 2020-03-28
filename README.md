@@ -1,6 +1,5 @@
 # Solar Server
 Forked from https://github.com/alexnathanson/solarserver
-This repo is now under heavy construction by Keita at IDM.
 
 This project is 
 - To host a webserver on Raspberry Pi powered by solor energy
