@@ -3,8 +3,8 @@ Forked from https://github.com/alexnathanson/solarserver
 
 This project is 
 - To host a webserver on Raspberry Pi powered by solor energy
-- To measure the energy consumption of the server using another Raspberry Pi with INA219.
-- To compare the energy consumptions of the server with different UI components using Selenium (i.e., difference of the energy consumptions of the server when hosting a large-data-size image and small-data-size image)
+- To measure the energy consumption of the server using another Raspberry Pi with INA219
+- To compare the energy consumptions of the server with different UI components using Selenium
 
 ## Getting Started
 ### Hardwares
