@@ -14,7 +14,7 @@ client.connect()
 
 while True:
     #doesn't need to happen every time, just at midnight
-    fileName = '/data/tracerData'+str(datetime.date.today())+'.csv' 
+    fileName = 'data/tracerData'+str(datetime.date.today())+'.csv' 
 
     result = client.read_input_registers(0x3100,16,unit=1)
 

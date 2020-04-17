@@ -15,6 +15,7 @@ def append_json_to_file(data: dict, path_file: str) -> bool:
     with open(path_file, 'ab+') as f:              # ファイルを開く
         f.seek(0,2)                                # ファイルの末尾（2）に移動（フォフセット0）  
         if f.tell() == 0 :                         # ファイルが空かチェック
+            print("first file of the day!")
             f.write(json.dumps([data], default=json_serial).encode())   # 空の場合は JSON 配列を書き込む
         else :
             f.seek(-1,2)                           # ファイルの末尾（2）から -1 文字移動
@@ -30,7 +31,7 @@ client.connect()
 
 while True:
     #doesn't need to happen every time, just at midnight
-    fileName = '/data/tracerData'+str(datetime.date.today())+'.json' 
+    fileName = 'data/tracerData'+str(datetime.date.today())+'.json' 
 
     result = client.read_input_registers(0x3100,16,unit=1)
     solarVoltage = float(result.registers[0] / 100.0)
@@ -67,7 +68,7 @@ while True:
 
     append_json_to_file(data, fileName)
 
-    #runs every minute
+    #runs every 5sec
     sleep(5)
 
 client.close()
