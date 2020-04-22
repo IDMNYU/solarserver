@@ -2,7 +2,7 @@
 function getjson() {
     var req = new XMLHttpRequest();
     req.overrideMimeType("application/json");
-    req.open("get", "data.json", true); 
+    req.open("get", "tracerData2020-04-19.json", true); 
     req.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var obj = JSON.parse(this.responseText);
@@ -62,7 +62,7 @@ function show(json){
                     type: "linear",
                     position: "left",
                     ticks: {
-                        max: 16.5,
+                        max: 20,
                         min: 10,
                         stepSize: 0.5
                     },
