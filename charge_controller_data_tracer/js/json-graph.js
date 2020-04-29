@@ -2,7 +2,7 @@
 function getjson() {
     var req = new XMLHttpRequest();
     req.overrideMimeType("application/json");
-    req.open("get", "tracerData2020-04-19.json", true); 
+    req.open("get", "../data/tracerData2020-04-19.json", true); 
     req.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var obj = JSON.parse(this.responseText);
