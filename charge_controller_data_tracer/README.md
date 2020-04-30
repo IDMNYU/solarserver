@@ -1,13 +1,18 @@
 # Charge Controller Data Tracer
-Originated from https://github.com/alexnathanson/EPSolar_Tracer
+This page is about the following two things.
+- To read the data of the solar charge controller of Epver and saving it as csv or json.
+- Do display a graph of the data from csv or json on html
 
+(Originated from https://github.com/alexnathanson/EPSolar_Tracer)
 
 ## Getting Started
 ### Hardwares
-TBA
+Solar Charge Controller: We use [Eprver Tracer3210AN](https://www.epsolarpv.com/product/3.html), but any Tracer-AN Series would work.
+
+[Raspberry Pi 4 Model B 4GM RAM](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/)
 
 ### Wiring
-TBA
+TBA (Please refer to https://github.com/alexnathanson/EPSolar_Tracer)
 
 ### Software Prerequisites
 To install pymodbus
@@ -46,9 +51,7 @@ $ python3 json_datalogger.py
 
 By default, the data is saved every 60 seconds. If you want to change the interval, change the number of `sleep(60)`.
 
-The data is stored under `data` folder.
-
-The data to be saved is as follows.
+The data is stored under `data` folder. The data to be saved is as follows.
 
 ```
 datetime: Python's datetime type
