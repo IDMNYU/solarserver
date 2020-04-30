@@ -10,7 +10,18 @@ TBA
 TBA
 
 ### Software Prerequisites
-TBA
+To install pymodbus
+
+```
+$ sudo pip3 install pymodbus
+```
+(If you don't have pip then run `$ sudo apt-get install python3-pip`)
+
+To install Pandas
+
+```
+$ sudo apt install python3-pandas
+```
 
 ## Run
 ### Test
@@ -70,7 +81,7 @@ By default, the apache server will refer to `/var/www/html/`. So one way is put 
 This method is easy, but has the disadvantage of being cumbersome to update files.
 
 #### Edit the apache server configuration
-Please refer to [Changing apache2 document root in ubuntu 14.x](https://julienrenaux.fr/2015/04/06/changing-apache2-document-root-in-ubuntu-14-x/).
+Rather than moving the file to the proper location as described above, this method changes the Apache's settings and changes the path that the server refers to. For more information, please refer to [Changing apache2 document root in ubuntu 14.x](https://julienrenaux.fr/2015/04/06/changing-apache2-document-root-in-ubuntu-14-x/).
 
 
 
