@@ -2,7 +2,7 @@
 function getjson() {
     var req = new XMLHttpRequest();
     req.overrideMimeType("application/json");
-    req.open("get", "../data/tracerData2020-04-19.json", true); 
+    req.open("get", "../data/tracerData2020-04-20.json", true); 
     req.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var obj = JSON.parse(this.responseText);
@@ -14,10 +14,10 @@ function getjson() {
 
 function show(json){
     var labels = json.map(function(e) {
-        var date = new Date(e.date);
-        var hour = date.getHours();
-        var min = date.getMinutes();
-        return hour + ':' + min;
+        var date = new Date(e.datetime)
+        var h = (date.getUTCHours()<10?'0':'') + date.getUTCHours();
+        var m = (date.getUTCMinutes()<10?'0':'') + date.getUTCMinutes();
+        return h + ':' + m;
     });
 
     var solar = json.map(function(e) {
