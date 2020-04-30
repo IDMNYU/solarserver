@@ -7,9 +7,9 @@ This page is about the following two things.
 
 ## Getting Started
 ### Hardwares
-Solar Charge Controller: We use [Eprver Tracer3210AN](https://www.epsolarpv.com/product/3.html), but any Tracer-AN Series would work.
+- Solar Charge Controller: We use [Eprver Tracer3210AN](https://www.epsolarpv.com/product/3.html), but any Eprver Tracer-AN Series would work.
 
-[Raspberry Pi 4 Model B 4GM RAM](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/)
+- [Raspberry Pi 4 Model B 4GM RAM](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/)
 
 ### Wiring
 TBA (Please refer to https://github.com/alexnathanson/EPSolar_Tracer)
