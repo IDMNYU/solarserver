@@ -74,6 +74,6 @@ while True:
     print("json writing: " + str(datetime.datetime.now()))
 
     # runs every x-seconds
-    sleep(60)
+    sleep(60*15)
 
 client.close()

@@ -1,14 +1,17 @@
 // read json and draw graph
-function getjson() {
-    var req = new XMLHttpRequest();
+function getjson(path) {
+    // https://reffect.co.jp/html/xmlhttprequest-basic
+    let req = new XMLHttpRequest();
     req.overrideMimeType("application/json");
-    req.open("get", "../data/tracerData2020-04-20.json", true); 
+    //req.responseType = 'json';
     req.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            var obj = JSON.parse(this.responseText);
-            show(obj)
+        if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+            let obj = JSON.parse(this.responseText);
+            //let obj = this.response;
+            show(obj);
         }
     }
+    req.open("get", '/data/' + path, false);
     req.send(null);
 }
 
@@ -77,4 +80,4 @@ function show(json){
     var chart = new Chart(ctx, config);
 };
 
-getjson();
+//getjson();
