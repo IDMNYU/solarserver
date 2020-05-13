@@ -26,6 +26,7 @@ function show(json){
     showVoltage(timeLabels, json);
     showCurrent(timeLabels, json);
     showPower(timeLabels, json);
+    showBatteryPercentage(timeLabels, json);
 
 };
 
@@ -254,7 +255,7 @@ function showPower(timeLabels, json) {
 
 var batteryPercentageChart=null;
 
-function showPower(timeLabels, json) {
+function showBatteryPercentage(timeLabels, json) {
 
     var battery = json.map(function(e) {
         return e.batteryPercentage*100;
