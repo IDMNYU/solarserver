@@ -23,6 +23,9 @@ foreach($files as $file){
 ?>
 
 <canvas id="voltageChart"></canvas>
+<canvas id="currentChart"></canvas>
+<canvas id="powerChart"></canvas>
+<canvas id="batteryPercentage"></canvas>
 
 </body>
 </html>
