@@ -11,18 +11,25 @@ function getjson(path) {
             show(obj);
         }
     }
-    req.open("get", '/data/' + path, false);
+    req.open("get", '/data/' + path, true);
     req.send(null);
 }
 
 function show(json){
-    var labels = json.map(function(e) {
+    var timeLabels = json.map(function(e) {
         var date = new Date(e.datetime)
         var h = (date.getUTCHours()<10?'0':'') + date.getUTCHours();
         var m = (date.getUTCMinutes()<10?'0':'') + date.getUTCMinutes();
         return h + ':' + m;
     });
 
+    showVoltage(timeLabels, json);
+
+};
+
+var voltageChart=null;
+
+function showVoltage(timeLabels, json) {
     var solar = json.map(function(e) {
         return e.solarVoltage;
     });
@@ -31,11 +38,15 @@ function show(json){
         return e.batteryVoltage;
     });
 
-    var ctx = document.getElementById("myBarChart");
+    var load = json.map(function(e) {
+        return e.loadVoltage;
+    });
+
+    var ctx = document.getElementById("voltageChart");
     var config = {
         type: 'line',
         data: {
-            labels: labels,
+            labels: timeLabels,
             datasets: [{
                 label: 'Solar',
                 data: solar,
@@ -45,6 +56,11 @@ function show(json){
                 label: 'Battery',
                 data: battery,
                 borderColor: 'rgba(54, 162, 235, 0.3)',
+                fill: false
+            }, {
+                label: 'Load',
+                data: load,
+                borderColor: 'rgba(192,192,192,0.3)',
                 fill: false
             }]
         },
@@ -77,7 +93,13 @@ function show(json){
             }
         }
     }
-    var chart = new Chart(ctx, config);
-};
+
+    if (window.voltageChart) {
+        window.voltageChart.destroy();
+    }
+    window.voltageChart = new Chart(ctx, config);
+    //var chart = new Chart(ctx, config);
+
+}
 
 //getjson();

@@ -22,7 +22,7 @@ foreach($files as $file){
 
 ?>
 
-<canvas id="myBarChart"></canvas>
+<canvas id="voltageChart"></canvas>
 
 </body>
 </html>
