@@ -26,6 +26,7 @@ foreach($files as $file){
 <canvas id="currentChart"></canvas>
 <canvas id="powerChart"></canvas>
 <canvas id="batteryPercentage"></canvas>
+<table id="dataTable" border=1 style="text-align: center;"></table>
 
 </body>
 </html>

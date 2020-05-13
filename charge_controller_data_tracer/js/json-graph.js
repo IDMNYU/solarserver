@@ -17,29 +17,40 @@ function getjson(path) {
 
 function showData(json){
     var timeLabels = json.map(function(e) {
-        var date = new Date(e.datetime)
+        var date = new Date(e.datetime);
         var h = (date.getUTCHours()<10?'0':'') + date.getUTCHours();
         var m = (date.getUTCMinutes()<10?'0':'') + date.getUTCMinutes();
         return h + ':' + m;
     });
 
+    // voltage
     var solarVoltage = json.map(function(e) {return e.solarVoltage;});
     var batteryVoltage = json.map(function(e) {return e.batteryVoltage;});
     var loadVoltage = json.map(function(e) {return e.loadVoltage;});
-    showVoltage(timeLabels, solarVoltage, batteryVoltage, loadVoltage);
 
+    // current
     var solarCurrent = json.map(function(e) {return e.solarCurrent;});
     var batteryCurrent = json.map(function(e) {return e.batteryCurrent;});
     var loadCurrent = json.map(function(e) {return e.loadCurrent;});
-    showCurrent(timeLabels, solarCurrent, batteryCurrent, loadCurrent);
 
+    // power
     var solarPowerL = json.map(function(e) {return e.solarPowerL;});
     var batteryPowerL = json.map(function(e) {return e.batteryPowerL;});
     var loadPower = json.map(function(e) {return e.loadPower;});
-    showPower(timeLabels, solarPowerL, batteryPowerL, loadPower);
+
+    // power: not sure what to use but read them anyway
+    var solarPowerH = json.map(function(e) {return e.solarPowerH;});
+    var batteryPowerH = json.map(function(e) {return e.batteryPowerH;});
 
     var batteryPercentage = json.map(function(e) {return e.batteryPercentage*100;});
+
+    // draw graphs and table
+    showVoltage(timeLabels, solarVoltage, batteryVoltage, loadVoltage);
+    showCurrent(timeLabels, solarCurrent, batteryCurrent, loadCurrent);
+    showPower(timeLabels, solarPowerL, batteryPowerL, loadPower);
     showBatteryPercentage(timeLabels, batteryPercentage);
+    showTable(timeLabels, solarVoltage, solarCurrent, solarPowerL, solarPowerH, batteryVoltage, batteryCurrent, batteryPowerL, batteryPowerH, loadVoltage, loadCurrent, loadPower, batteryPercentage);
+    //showTable(json);
 };
 
 // global variables for each chart
@@ -276,4 +287,53 @@ function showBatteryPercentage(timeLabels, batteryPercentage) {
         window.batteryPercentageChart.destroy();
     }
     window.batteryPercentageChart = new Chart(ctx, config);
+}
+
+//function showTable(timeLabels, solarVoltage, showCurrent, solarPowerL, solarPowerH, batteryVoltage, batteryCurrent, batteryPowerL, batteryPowerH, loadVoltage, loadCurrent, loadPower, batteryPercentage) {
+/*
+function showTable(json) {
+    txt = ""
+    txt += showHeader(json, txt);
+    //showContent(txt);
+    document.getElementById("dataTable").innerHTML = txt;
+}
+*/
+
+function showTable(timeLabels, solarVoltage, solarCurrent, solarPowerL, solarPowerH, batteryVoltage, batteryCurrent, batteryPowerL, batteryPowerH, loadVoltage, loadCurrent, loadPower, batteryPercentage) {
+    var txt = "";
+
+    txt += "<tr>"
+    txt += "<th>" + "Time" + "</td>";
+    txt += "<th>" + "Solar Voltage" + "</td>";
+    txt += "<th>" + "Solar Current" + "</td>";
+    txt += "<th>" + "Solar Power L" + "</td>";
+    txt += "<th>" + "Solar Power H" + "</td>";
+    txt += "<th>" + "Battery Voltage" + "</td>";
+    txt += "<th>" + "Battery Current" + "</td>";
+    txt += "<th>" + "Battery Power L" + "</td>";
+    txt += "<th>" + "Battery Power H" + "</td>";
+    txt += "<th>" + "Load Voltage" + "</td>";
+    txt += "<th>" + "Load Current" + "</td>";
+    txt += "<th>" + "Load Power" + "</td>";
+    txt += "<th>" + "Battery Percentage" + "</td>";
+    txt += "</th>"
+
+    for (var i = 0; i < timeLabels.length; i++) {
+        txt += "<tr>";
+        txt += "<td>" + timeLabels[i] + "</td>";
+        txt += "<td>" + solarVoltage[i] + "</td>";
+        txt += "<td>" + solarCurrent[i] + "</td>";
+        txt += "<td>" + solarPowerL[i] + "</td>";
+        txt += "<td>" + solarPowerH[i] + "</td>";
+        txt += "<td>" + batteryVoltage[i] + "</td>";
+        txt += "<td>" + batteryCurrent[i] + "</td>";
+        txt += "<td>" + batteryPowerL[i] + "</td>";
+        txt += "<td>" + batteryPowerH[i] + "</td>";
+        txt += "<td>" + loadVoltage[i] + "</td>";
+        txt += "<td>" + loadCurrent[i] + "</td>";
+        txt += "<td>" + loadPower[i] + "</td>";
+        txt += "<td>" + parseInt(batteryPercentage[i]) + "</td>";
+        txt += "</tr>";
+    }
+    document.getElementById("dataTable").innerHTML = txt;
 }
