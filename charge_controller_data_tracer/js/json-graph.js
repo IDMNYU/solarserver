@@ -50,7 +50,6 @@ function showData(json){
     showPower(timeLabels, solarPowerL, batteryPowerL, loadPower);
     showBatteryPercentage(timeLabels, batteryPercentage);
     showTable(timeLabels, solarVoltage, solarCurrent, solarPowerL, solarPowerH, batteryVoltage, batteryCurrent, batteryPowerL, batteryPowerH, loadVoltage, loadCurrent, loadPower, batteryPercentage);
-    //showTable(json);
 };
 
 // global variables for each chart
@@ -113,6 +112,7 @@ function showVoltage(timeLabels, solarVoltage, batteryVoltage, loadVoltage) {
         }
     }
 
+    // delete old one before showing new one
     if (window.voltageChart) {
         window.voltageChart.destroy();
     }
@@ -173,6 +173,7 @@ function showCurrent(timeLabels, solarCurrent, batteryCurrent, loadCurrent) {
         }
     }
 
+    // delete old one before showing new one
     if (window.currentChart) {
         window.currentChart.destroy();
     }
@@ -233,6 +234,7 @@ function showPower(timeLabels, solarPowerL, batteryPowerL, loadPower) {
         }
     }
 
+    // delete old one before showing new one
     if (window.powerChart) {
         window.powerChart.destroy();
     }
@@ -283,22 +285,15 @@ function showBatteryPercentage(timeLabels, batteryPercentage) {
         }
     }
 
+    // delete old one before showing new one
     if (window.batteryPercentageChart) {
         window.batteryPercentageChart.destroy();
     }
     window.batteryPercentageChart = new Chart(ctx, config);
 }
 
-//function showTable(timeLabels, solarVoltage, showCurrent, solarPowerL, solarPowerH, batteryVoltage, batteryCurrent, batteryPowerL, batteryPowerH, loadVoltage, loadCurrent, loadPower, batteryPercentage) {
-/*
-function showTable(json) {
-    txt = ""
-    txt += showHeader(json, txt);
-    //showContent(txt);
-    document.getElementById("dataTable").innerHTML = txt;
-}
-*/
 
+// don't like it but forgive me for now
 function showTable(timeLabels, solarVoltage, solarCurrent, solarPowerL, solarPowerH, batteryVoltage, batteryCurrent, batteryPowerL, batteryPowerH, loadVoltage, loadCurrent, loadPower, batteryPercentage) {
     var txt = "";
 
