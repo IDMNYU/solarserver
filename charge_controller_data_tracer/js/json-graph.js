@@ -8,14 +8,14 @@ function getjson(path) {
         if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
             let obj = JSON.parse(this.responseText);
             //let obj = this.response;
-            show(obj);
+            showData(obj);
         }
     }
     req.open("get", '/data/' + path, true);
     req.send(null);
 }
 
-function show(json){
+function showData(json){
     var timeLabels = json.map(function(e) {
         var date = new Date(e.datetime)
         var h = (date.getUTCHours()<10?'0':'') + date.getUTCHours();
@@ -23,29 +23,33 @@ function show(json){
         return h + ':' + m;
     });
 
-    showVoltage(timeLabels, json);
-    showCurrent(timeLabels, json);
-    showPower(timeLabels, json);
-    showBatteryPercentage(timeLabels, json);
+    var solarVoltage = json.map(function(e) {return e.solarVoltage;});
+    var batteryVoltage = json.map(function(e) {return e.batteryVoltage;});
+    var loadVoltage = json.map(function(e) {return e.loadVoltage;});
+    showVoltage(timeLabels, solarVoltage, batteryVoltage, loadVoltage);
 
+    var solarCurrent = json.map(function(e) {return e.solarCurrent;});
+    var batteryCurrent = json.map(function(e) {return e.batteryCurrent;});
+    var loadCurrent = json.map(function(e) {return e.loadCurrent;});
+    showCurrent(timeLabels, solarCurrent, batteryCurrent, loadCurrent);
+
+    var solarPowerL = json.map(function(e) {return e.solarPowerL;});
+    var batteryPowerL = json.map(function(e) {return e.batteryPowerL;});
+    var loadPower = json.map(function(e) {return e.loadPower;});
+    showPower(timeLabels, solarPowerL, batteryPowerL, loadPower);
+
+    var batteryPercentage = json.map(function(e) {return e.batteryPercentage*100;});
+    showBatteryPercentage(timeLabels, batteryPercentage);
 };
 
-
+// global variables for each chart
 var voltageChart=null;
+var currentChart=null;
+var powerChart=null;
+var batteryPercentageChart=null;
 
-function showVoltage(timeLabels, json) {
-    var solar = json.map(function(e) {
-        return e.solarVoltage;
-    });
 
-    var battery = json.map(function(e) {
-        return e.batteryVoltage;
-    });
-
-    var load = json.map(function(e) {
-        return e.loadVoltage;
-    });
-
+function showVoltage(timeLabels, solarVoltage, batteryVoltage, loadVoltage) {
     var ctx = document.getElementById("voltageChart");
     var config = {
         type: 'line',
@@ -53,17 +57,17 @@ function showVoltage(timeLabels, json) {
             labels: timeLabels,
             datasets: [{
                 label: 'Solar',
-                data: solar,
+                data: solarVoltage,
                 borderColor: 'rgba(154, 162, 235, 0.3)',
                 fill: false
             }, {
                 label: 'Battery',
-                data: battery,
+                data: batteryVoltage,
                 borderColor: 'rgba(54, 162, 235, 0.3)',
                 fill: false
             }, {
                 label: 'Load',
-                data: load,
+                data: loadVoltage,
                 borderColor: 'rgba(192,192,192,0.3)',
                 fill: false
             }]
@@ -105,21 +109,7 @@ function showVoltage(timeLabels, json) {
 }
 
 
-var currentChart=null;
-
-function showCurrent(timeLabels, json) {
-    var solar = json.map(function(e) {
-        return e.solarCurrent;
-    });
-
-    var battery = json.map(function(e) {
-        return e.batteryCurrent;
-    });
-
-    var load = json.map(function(e) {
-        return e.loadCurrent;
-    });
-
+function showCurrent(timeLabels, solarCurrent, batteryCurrent, loadCurrent) {
     var ctx = document.getElementById("currentChart");
     var config = {
         type: 'line',
@@ -127,17 +117,17 @@ function showCurrent(timeLabels, json) {
             labels: timeLabels,
             datasets: [{
                 label: 'Solar',
-                data: solar,
+                data: solarCurrent,
                 borderColor: 'rgba(154, 162, 235, 0.3)',
                 fill: false
             }, {
                 label: 'Battery',
-                data: battery,
+                data: batteryCurrent,
                 borderColor: 'rgba(54, 162, 235, 0.3)',
                 fill: false
             }, {
                 label: 'Load',
-                data: load,
+                data: loadCurrent,
                 borderColor: 'rgba(192,192,192,0.3)',
                 fill: false
             }]
@@ -179,21 +169,7 @@ function showCurrent(timeLabels, json) {
 }
 
 
-var powerChart=null;
-
-function showPower(timeLabels, json) {
-    var solar = json.map(function(e) {
-        return e.solarPowerL;
-    });
-
-    var battery = json.map(function(e) {
-        return e.batteryPowerL;
-    });
-
-    var load = json.map(function(e) {
-        return e.loadPower;
-    });
-
+function showPower(timeLabels, solarPowerL, batteryPowerL, loadPower) {
     var ctx = document.getElementById("powerChart");
     var config = {
         type: 'line',
@@ -201,17 +177,17 @@ function showPower(timeLabels, json) {
             labels: timeLabels,
             datasets: [{
                 label: 'Solar',
-                data: solar,
+                data: solarPowerL,
                 borderColor: 'rgba(154, 162, 235, 0.3)',
                 fill: false
             }, {
                 label: 'Battery',
-                data: battery,
+                data: batteryPowerL,
                 borderColor: 'rgba(54, 162, 235, 0.3)',
                 fill: false
             }, {
                 label: 'Load',
-                data: load,
+                data: loadPower,
                 borderColor: 'rgba(192,192,192,0.3)',
                 fill: false
             }]
@@ -253,14 +229,7 @@ function showPower(timeLabels, json) {
 }
 
 
-var batteryPercentageChart=null;
-
-function showBatteryPercentage(timeLabels, json) {
-
-    var battery = json.map(function(e) {
-        return e.batteryPercentage*100;
-    });
-
+function showBatteryPercentage(timeLabels, batteryPercentage) {
     var ctx = document.getElementById("batteryPercentage");
     var config = {
         type: 'line',
@@ -268,7 +237,7 @@ function showBatteryPercentage(timeLabels, json) {
             labels: timeLabels,
             datasets: [{
                 label: 'Battery',
-                data: battery,
+                data: batteryPercentage,
                 borderColor: 'rgba(54, 162, 235, 0.3)',
                 fill: false
             }]
@@ -308,6 +277,3 @@ function showBatteryPercentage(timeLabels, json) {
     }
     window.batteryPercentageChart = new Chart(ctx, config);
 }
-
-
-//getjson();
