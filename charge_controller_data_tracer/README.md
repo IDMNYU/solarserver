@@ -88,7 +88,7 @@ Rather than moving the file to the proper location as described above, this meth
 
 ### Screenshot
 You'll see something like this.
-
+![screenshot](https://github.com/IDMNYU/solarserver/blob/master/images/webpage.png)
 
 ## Notes
 All codes are still in progress.
