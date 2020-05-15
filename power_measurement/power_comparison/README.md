@@ -44,7 +44,7 @@ $ python3 main.py IP-ADDRESS-OF-SERVER-PI
 `main.py` runs three programs and does the following:
 - `ina219_datarecorder.py`: Measuring-Pi gets power consumption of Server-Pi and save `ina219-xxx.csv` file under `data` folder.
 - `imagesize_pingpong.py`: Measuring-Pi accesses html files in `dropdown` folder on Server-Pi which show large and small images. This is done in background so the actual web browser does not open. The test is repeated three times and save data as `selenium-xxx.csv` file under `data` folder. To change the times of the test, modify `times = 3` in line 70.
-- `aggregator.py`: Compare `ina219-xxx.csv` and `selenium-xxx.csv`, and show some graphs.
+- `aggregator.py`: Compare `ina219-xxx.csv` and `selenium-xxx.csv`, and save three graphs, `volts.png`, `watts.png`, and `currents.png`.
 
 ## Notes
 `aggregator.py` has some errors. All codes are still in progress.
