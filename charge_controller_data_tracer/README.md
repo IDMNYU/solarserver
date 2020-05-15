@@ -5,7 +5,7 @@ This page is about the following two things.
 
 (Originated from https://github.com/alexnathanson/EPSolar_Tracer)
 
-## To read the data of the solar charge controller
+## Read the data of the solar charge controller
 ### Hardwares
 - Solar Charge Controller: We use [Eprver Tracer3210AN](https://www.epsolarpv.com/product/3.html), but any Eprver Tracer-AN Series would work.
 
@@ -72,8 +72,8 @@ batteryPercentage: In decimal
 ## Display data as a graph in HTML
 This section explains how to set up a local server in Raspberry Pi and display the data as a graph using JavaScript and html.
 
-### Setup websever
-Please refer to [Set up an Apache web server](https://projects.raspberrypi.org/en/projects/lamp-web-server-with-wordpress/2) and setup a web server on your RaspberyPi. Also finish [Install PHP](https://projects.raspberrypi.org/en/projects/lamp-web-server-with-wordpress/3).
+### Host a website
+Please refer to [Set up an Apache web server](https://projects.raspberrypi.org/en/projects/lamp-web-server-with-wordpress/2) and [Install PHP](https://projects.raspberrypi.org/en/projects/lamp-web-server-with-wordpress/3) to setup a server on Raspberry Pi.
 
 ### Display data
 To display data, we use `index.php`, `data` folder, and `js` folder. Here we show two ways to do it, so you can choose the one you like: either place necessary files in the appropriate location or edit the apache server configuration to properly specify the path of the files.

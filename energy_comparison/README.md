@@ -2,8 +2,19 @@
 This is to compare the energy consumptions of the server with different UI components using Selenium. For now, it only supports comparing the energy consumptions of the server when hosting a large-data-size image and small-data-size image.
 
 ## Getting Started
-### Hardware Prerequisites
-See README at [solarserver](https://github.com/IDMNYU/solarserver).
+### Hardwares
+We use two Raspberry Pi and one INA219.
+- One Raspberry Pi (Server-Pi) is for a webserver.
+- The other Raspberry Pi with INA219 (Measuring-Pi) is for measuring the Server-Pi's power consumption.
+
+### Wiring
+#### Wiring with Measuring-Pi and INA219.
+See [Python Computer Wiring](https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/python-circuitpython).
+
+#### Wiring with Server-Pi and Measuring-Pi + INA219
+![Wiring with Server-Pi and Measuring-Pi + INA219](https://github.com/IDMNYU/solarserver/blob/master/images/wiring.png)
+
+
 
 ### Software Prerequisites
 In addition to what's written in README at [solarserver](https://github.com/IDMNYU/solarserver), you need the followings.

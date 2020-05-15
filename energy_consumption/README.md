@@ -2,8 +2,21 @@
 This is to measure the energy consumption of Server-Pi using Measuring-Pi with INA219.
 
 ## Getting Started
-### Hardware Prerequisites
-See README at [solarserver](https://github.com/IDMNYU/solarserver).
+### Hardwares
+We use two Raspberry Pi and one INA219.
+- One Raspberry Pi (Server-Pi) is for a webserver.
+- The other Raspberry Pi with INA219 (Measuring-Pi) is for measuring the Server-Pi's power consumption.
+
+### Wiring
+#### Wiring with Measuring-Pi and INA219.
+See [Python Computer Wiring](https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/python-circuitpython).
+
+#### Wiring with Server-Pi and Measuring-Pi + INA219
+![Wiring with Server-Pi and Measuring-Pi + INA219](https://github.com/IDMNYU/solarserver/blob/master/images/wiring.png)
+
+
+
+
 
 ### Software Prerequisites
 See README at [solarserver](https://github.com/IDMNYU/solarserver).
