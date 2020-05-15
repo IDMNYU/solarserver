@@ -1,7 +1,7 @@
 # Charge Controller Data Tracer
 This page is about the following two things.
 - To read the data of the solar charge controller of Epver and saving it as csv or json.
-- Do display a graph of the data from csv or json on html
+- To display some graphs/tables of the data from csv or json on html
 
 (Originated from https://github.com/alexnathanson/EPSolar_Tracer)
 

@@ -1,4 +1,4 @@
-// read json and draw graph
+// read json and draw graph and table
 function getjson(path) {
     // https://reffect.co.jp/html/xmlhttprequest-basic
     let req = new XMLHttpRequest();
@@ -14,6 +14,13 @@ function getjson(path) {
     req.open("get", '/data/' + path, true);
     req.send(null);
 }
+
+// read json_from_csv and draw graph and table
+function getcsv(json_from_csv) {
+    let obj = JSON.parse(json_from_csv);
+    showData(obj);
+}
+
 
 function showData(json){
     var timeLabels = json.map(function(e) {
