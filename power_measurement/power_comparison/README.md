@@ -1,25 +1,8 @@
 # Energy Comparison
-This is to compare the energy consumptions of the server with different UI components using Selenium. For now, it only supports comparing the energy consumptions of the server when hosting a large-data-size image and small-data-size image.
+This is to compare the power consumptions of the server with different UI components using Selenium. For now, it only supports comparing the power consumptions of the server when hosting a large-data-size image and small-data-size image.
 
 ## Getting Started
-### Hardwares
-We use two Raspberry Pi and one INA219.
-- One Raspberry Pi (Server-Pi) is for a webserver.
-- The other Raspberry Pi with INA219 (Measuring-Pi) is for measuring the Server-Pi's power consumption.
-
-### Wiring
-#### Wiring with Measuring-Pi and INA219.
-See [Python Computer Wiring](https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/python-circuitpython).
-
-#### Wiring with Server-Pi and Measuring-Pi + INA219
-![Wiring with Server-Pi and Measuring-Pi + INA219](https://github.com/IDMNYU/solarserver/blob/master/images/wiring.png)
-
-
-
-### Software Prerequisites
-In addition to what's written in README at [solarserver](https://github.com/IDMNYU/solarserver), you need the followings.
-
-#### Install Selenium (firefox driver) on Measuring-Pi.
+### Install Selenium (firefox driver) on Measuring-Pi.
 You need to install Selenium (firefox driver) on Measuring-Pi.
 
 Install firefox on Measuring-Pi.
@@ -44,9 +27,10 @@ Open it and move geckodriver to /usr/local/bin/
 
 To test, run `Example 0` from https://pypi.org/project/selenium/.
 
-#### Place html files in Server-Pi
-Move the `dropdown` folder under /var/www/html on your Server-Pi.
-
+### Place html files in Server-Pi
+Please do either of the following.
+- Move the `dropdown` folder under `/var/www/html` which the apache server will refer to by default.
+- Change the apache server configuration. See [Display data](https://github.com/IDMNYU/solarserver/tree/master/charge_controller_data_tracer#display-data) for more detail.
 
 ## Run codes
 ```

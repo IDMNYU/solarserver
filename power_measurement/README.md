@@ -2,8 +2,6 @@ This is a parent directory of the following two directories.
 * [power_consumption](https://github.com/IDMNYU/solarserver/tree/master/power_measurement/power_consumption): To measure the energy consumption of a Raspberry Pi using another Raspberry Pi with INA219.
 * [power_comparison](https://github.com/IDMNYU/solarserver/tree/master/power_measurement/power_comparison): To compare the energy consumptions of webserver on a Raspberry Pi hosting two different websites that shows different UI components by using Selenium, 
 
-Basic idea is to measure the power consumption of a Raspberry Pi using another Raspberry Pi with INA219.
-
 ## Getting Started
 ### Hardwares
 We use two Raspberry Pi and one INA219.
@@ -24,7 +22,7 @@ First, install `CircuitPython Library` on Measuring-Pi. See [Installing CircuitP
 Then, install `adafruit-circuitpython-ina219` library via `$ sudo pip3 install adafruit-circuitpython-ina219` (See [Python Installation of INA219 Library](https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/python-circuitpython#python-installation-of-ina219-library-7-6) for the detail).
 
 #### Host a website
-Please refer to [Set up an Apache web server](https://projects.raspberrypi.org/en/projects/lamp-web-server-with-wordpress/2) and [Install PHP](https://projects.raspberrypi.org/en/projects/lamp-web-server-with-wordpress/3) to setup a server on Raspberry Pi.
+Please refer to [Host a website](https://github.com/IDMNYU/solarserver/tree/master/charge_controller_data_tracer#host-a-website).
 
 #### Other libraries
 TBA
