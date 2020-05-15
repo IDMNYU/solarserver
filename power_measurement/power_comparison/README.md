@@ -34,7 +34,6 @@ Please do either of the following.
 
 ## Run codes
 ```
-$ cd energy_comparison/
 $ python3 main.py IP-ADDRESS-OF-SERVER-PI
 ```
 

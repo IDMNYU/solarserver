@@ -3,7 +3,6 @@ This is to measure the power consumption of Server-Pi using Measuring-Pi with IN
 
 ## Run codes
 ```
-$ cd energy_consumption/
 $ python3 json_ina219_datarecorder.py
 ```
 
