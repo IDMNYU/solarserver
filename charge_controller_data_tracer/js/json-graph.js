@@ -24,7 +24,9 @@ function getcsv(json_from_csv) {
 
 function showData(json){
     var timeLabels = json.map(function(e) {
-        var date = new Date(e.datetime);
+        // Add 'Z' to correctly read datetime
+        // https://stackoverflow.com/questions/21883699/safari-javascript-date-nan-issue-yyyy-mm-dd-hhmmss
+        var date = new Date(e.datetime+'Z');
         var h = (date.getUTCHours()<10?'0':'') + date.getUTCHours();
         var m = (date.getUTCMinutes()<10?'0':'') + date.getUTCMinutes();
         return h + ':' + m;
