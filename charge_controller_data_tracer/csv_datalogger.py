@@ -58,6 +58,6 @@ while True:
     print("csv writing: " + str(datetime.datetime.now()))
 
     # runs every x-second
-    sleep(60)
+    sleep(60*15)
 
 client.close()

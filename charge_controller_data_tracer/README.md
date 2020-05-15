@@ -1,7 +1,7 @@
 # Charge Controller Data Tracer
 This page is about the following two things.
 - To read the data of the solar charge controller of Epver and saving it as csv or json.
-- To display some graphs/tables of the data from csv or json on html
+- To display some graphs/tables of the data from csv and json on html
 
 (Originated from https://github.com/alexnathanson/EPSolar_Tracer)
 
@@ -49,7 +49,7 @@ To save charge controller data as json, run
 $ python3 json_datalogger.py
 ```
 
-By default, the data is saved every 60 seconds. If you want to change the interval, change the number of `sleep(60)`.
+By default, the data is saved every 15 minutes (60sec * 15) seconds. If you want to change the interval, change the number of `sleep(60 * 15)`.
 
 The data is stored under `data` folder. The data to be saved is as follows.
 
@@ -85,6 +85,10 @@ This method is easy, but has the disadvantage of being cumbersome to update file
 
 #### Edit the apache server configuration
 Rather than moving the file to the proper location as described above, this method changes the Apache's settings and changes the path that the server refers to. For more information, please refer to [Changing apache2 document root in ubuntu 14.x](https://julienrenaux.fr/2015/04/06/changing-apache2-document-root-in-ubuntu-14-x/).
+
+### Screenshot
+You'll see something like this.
+
 
 ## Notes
 All codes are still in progress.
