@@ -3,29 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
     <link rel="stylesheet" href="styles.css">
     <title>solar protocol</title>
 </head>
 <body>
-    <img src="images/Solar-globe-bw-small.png" alt="Solar path diagram" width="60%">
     <p>The first algorithm was the sun.</p>
-
     <div class="data">
-=======
-    <title>solar protocol</title>
-</head>
-<body>
-    <p>The first algorithm was the sun.</p>
->>>>>>> bf0933c9ff38fedf00b5118ed0bb9c53a3e6106b
     <p>Total Solar Voltage: {{solarVoltage}}</p>
     <p>Battery Level: {{batteryCurrent}}</p>
 
+
     {% if batteryCurrent < 0.2 %}
         <p>The battery is very low!!!</p>
-
-        
     {% endif %}
-</div>
+    </div>
 </body>
 </html>
